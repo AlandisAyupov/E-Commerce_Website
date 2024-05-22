@@ -1,40 +1,32 @@
-// package com.ayupov.Bank.user;
+package com.ayupov.Bank.user;
 
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Controller;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestMapping;
-// import org.springframework.web.bind.annotation.RequestParam;
-// import org.springframework.web.bind.annotation.ResponseBody;
-// import org.springframework.web.bind.annotation.RestController;
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.*;
-// import org.springframework.http.ResponseEntity;
-// import javax.validation.Valid;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-// import java.time.LocalDate;
-// import java.util.List;
-// import java.util.Optional;
+import com.ayupov.Bank.user.UserService;
 
-// @RestController
-// public class UserController {
-// @Autowired
-//     UserRepository userRepository;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.beans.factory.annotation.Autowired;
 
-//     @GetMapping("/users")
-//     public List<User> getAllUsers() {
-//         return userRepository.findAll();
-//     }
+@RestController
+@RequestMapping("/user")
+public class UserController {
 
-//     @GetMapping("/users/{email}")
-//     public List<User> getUser(@PathVariable(value = "email") String email) {
-//         return userRepository.findByEmail(email).orElseThrow(() -> new UserNotFoundException(email));
-//     }
+    @Autowired
+    private UserService userService;
 
-//     @PostMapping("/users")
-//     public Book createUser(@Valid @RequestBody User user) {
-//         return userRepository.save(user);
-//     }
-// }
+    @PostMapping("/add")
+    public String addUser(@RequestBody User user) {
+        userService.addUser(user);
+
+        return "success add user";
+    }
+
+    @GetMapping("/get")
+    public User getUser(@RequestParam String email) {
+        return userService.getUser(email);
+    }
+}
