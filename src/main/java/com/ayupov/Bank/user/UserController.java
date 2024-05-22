@@ -19,10 +19,8 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public String addUser(@RequestBody User user) {
-        userService.addUser(user);
-
-        return "success add user";
+    public String addUser(@RequestBody requestUser user) {
+        return user.toString();
     }
 
     @GetMapping("/get")
