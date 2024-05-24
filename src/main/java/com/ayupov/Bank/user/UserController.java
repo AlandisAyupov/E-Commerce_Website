@@ -19,8 +19,13 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public String addUser(@RequestBody requestUser user) {
-        return user.toString();
+    public int addUser(@RequestBody requestUser user) {
+        //TODO: use userService to add user from params in "user" request object. 
+        //TODO: return http status code, 200 if insert is success, 500 otherwise.
+        User newUser = new User();
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(user.getPassword());
+        return userService.addUser(newUser);
     }
 
     @GetMapping("/get")

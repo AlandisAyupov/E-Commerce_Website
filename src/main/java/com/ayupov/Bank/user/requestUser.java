@@ -11,13 +11,13 @@ public class requestUser {
     {
         return this.password;
     }
-    public String setEmail()
+    public void setEmail(String email)
     {
-        return this.email;
+        this.email = email;
     }
-    public String setPassword()
+    public void setPassword(String password)
     {
-        return this.password;
+        this.password = password;
     }
     @Override
     public String toString()

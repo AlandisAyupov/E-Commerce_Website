@@ -2,14 +2,18 @@ package com.ayupov.Bank.user;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
 
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    void addUser(User user)
+    //TODO:add user implementation, insert into database,
+    int addUser(User user)
     {
-        return;
+        String query = "INSERT INTO USERS VALUES ('" + user.getEmail() + "'," + "'" + user.getPassword() + "');";
+        return 200;
     }
 
     List<User> getUsers()
