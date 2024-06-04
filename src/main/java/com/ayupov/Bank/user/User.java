@@ -1,10 +1,13 @@
 package com.ayupov.Bank.user;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
+import jakarta.persistence.Id;
 
-@Table(name = "users")
+@Entity
 public class User {
+  @Id
   @Column(name = "email", nullable = false, unique = true)
   private String email;
   @Column(name = "password", nullable = false)
