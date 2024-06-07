@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
+    @Autowired 
     private UserRepository userRepository;
     //TODO:add user implementation, insert into database,
     int addUser(User user)
