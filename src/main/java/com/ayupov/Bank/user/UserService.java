@@ -2,6 +2,7 @@ package com.ayupov.Bank.user;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class UserService {
     @Autowired 
     private UserRepository userRepository;
-    //TODO:add user implementation, insert into database,
     int addUser(User user)
     {
         String query = "INSERT INTO USERS VALUES ('" + user.getEmail() + "'," + "'" + user.getPassword() + "');";
@@ -31,9 +31,16 @@ public class UserService {
         return new ArrayList<User>();
     }   
 
-    User getUser(String email)
+    boolean loginUser(String email, String password)
     {
-        return new User();
+        Optional<User> opt = userRepository.findById(email);
+        if(opt.isPresent())
+        {
+            User cmp = opt.get();
+            if(cmp.getPassword().equals(password))
+                return opt.isPresent();
+        }
+        return false;
     }
 
     void updateUser(String email, User user)

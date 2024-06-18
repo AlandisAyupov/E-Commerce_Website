@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ayupov.Bank.user.UserService;
-
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -20,8 +18,6 @@ public class UserController {
 
     @PostMapping("/add")
     public int addUser(@RequestBody requestUser user) {
-        //TODO: use userService to add user from params in "user" request object. 
-        //TODO: return http status code, 200 if insert is success, 500 otherwise.
         User newUser = new User();
         newUser.setEmail(user.getEmail());
         newUser.setPassword(user.getPassword());
@@ -29,7 +25,11 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public User getUser(@RequestParam String email) {
-        return userService.getUser(email);
+    public int loginUser(@RequestParam String email, @RequestParam String password) {
+        boolean ret = userService.loginUser(email, password);
+        if(ret)
+            return 200;
+        else
+            return 404;
     }
 }

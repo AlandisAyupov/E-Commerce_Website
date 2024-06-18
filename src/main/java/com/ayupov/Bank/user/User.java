@@ -2,7 +2,6 @@ package com.ayupov.Bank.user;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Column;
-import jakarta.persistence.Table;
 import jakarta.persistence.Id;
 
 @Entity
