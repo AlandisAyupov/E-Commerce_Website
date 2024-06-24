@@ -28,7 +28,7 @@ public class UserService {
 
     List<User> getUsers()
     {
-        return new ArrayList<User>();
+        return new ArrayList<>();
     }   
 
     boolean loginUser(String email, String password)

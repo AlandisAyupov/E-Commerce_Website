@@ -15,7 +15,7 @@
 	<description>Bank</description>
 	<properties>
 		<java.version>22</java.version>
-		<maven.compiler.release>21</maven.compiler.release>
+		<maven.compiler.release>16</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <allure.version>2.25.0</allure.version>
         <aspectj.version>1.9.21</aspectj.version>
