@@ -17,21 +17,28 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
-    @Autowired 
-    private UserRepository userRepository;
-    int addUser(User user)
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository)
+    {
+        // this keyword refers to current instance
+        this.userRepository = userRepository;
+    }
+
+    public int addUser(User user)
     {
         String query = "INSERT INTO USERS VALUES ('" + user.getEmail() + "'," + "'" + user.getPassword() + "');";
         userRepository.save(user);
         return 200;
     }
 
-    List<User> getUsers()
+    public List<User> getUsers()
     {
         return new ArrayList<>();
     }   
 
-    boolean loginUser(String email, String password)
+    public boolean loginUser(String email, String password)
     {
         Optional<User> opt = userRepository.findById(email);
         if(opt.isPresent())

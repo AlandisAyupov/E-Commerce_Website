@@ -1,37 +1,75 @@
 package com.ayupov.Bank;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//USing BDD Mockito 
+import static org.mockito.BDDMockito.verify;
+import static org.mockito.BDDMockito.given;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+import java.util.Optional;
+import com.ayupov.Bank.user.User;
+import com.ayupov.Bank.user.UserRepository;
+import com.ayupov.Bank.user.UserService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
+ 
+@ExtendWith(MockitoExtension.class)
+ 
+// Main class
+class ControllerTests {
+ 
+    @Mock
+    private UserRepository userRepo;
+    //When using Mockito Use @InjectMocks to inject
+    //Mocked beans to following class
+    @InjectMocks
+    private UserService userService;
+ 
+    @Test 
+    void addUser()
+    {
+        //given
+		User user1 = new User();
+		user1.setEmail("abc@gmail.com");
+		user1.setPassword("1dj1jd90");
+        given(userRepo.save(user1))
+        .willReturn(user1);
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-
-@SpringBootTest(classes = Application.class)
-public class ControllerTests extends AbstractTestNGSpringContextTests {
-
-	@Autowired
-	private WebApplicationContext webApplicationContext;
-
-	private MockMvc mockMvc;
-
-	@BeforeClass
-	public void setup() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-	}
-
-	@Test
-    public void testGetUser() throws Exception {
-        mockMvc.perform(get("/user"))
-                .andExpect(status().isOk())
-                .andExpect(content().contentType("application/json;charset=UTF-8"))
-                .andExpect(jsonPath("$.email").value("ayupovalandis@gmail.com"))
-                .andExpect(jsonPath("$.password").value("1hn2h981"));
+        assertThat(userService.addUser(user1)).isEqualTo(200);
     }
 
+    @Test 
+    void loginUser()
+    {
+        //given
+		User user1 = new User();
+		user1.setEmail("abc@gmail.com");
+		user1.setPassword("1dj1jd90");
+        Optional<User> userOpt = Optional.of(user1);
+        given(userRepo.findById(user1.getEmail())).willReturn(userOpt);
+
+        assertThat(userService.loginUser(user1.getEmail(), user1.getPassword())).isTrue();
+    }
+
+    @Test
+    void getAllUsers()
+    {
+        //given
+		User user1 = new User();
+		user1.setEmail("abc@gmail.com");
+		user1.setPassword("1dj1jd90");
+		userService.addUser(user1);
+        //When
+        given(userRepo.findAll())
+        .willReturn(List.of(user1));
+        var list = userService.getUsers();
+    	//Then
+        //Make sure to import assertThat From org.assertj.core.api package
+        assertThat(list).isNotNull().hasSize(1);
+    }
 }

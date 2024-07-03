@@ -17,7 +17,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public int addUser(@RequestBody requestUser user) {
+    public int addUser(@RequestBody RequestUser user) {
         User newUser = new User();
         newUser.setEmail(user.getEmail());
         newUser.setPassword(user.getPassword());

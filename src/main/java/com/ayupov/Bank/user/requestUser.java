@@ -1,6 +1,6 @@
 package com.ayupov.Bank.user;
 
-public class requestUser {
+public class RequestUser {
     String email;
     String password;
     public String getEmail()

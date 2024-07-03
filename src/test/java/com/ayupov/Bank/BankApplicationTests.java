@@ -11,13 +11,13 @@ class BankApplicationTests {
 
 	@Test
 	void contextLoads() {
-		Allure.step(String.format("contextLoads"));
+		Allure.step("contextLoads");
 	}
 
 	@Test
-	public void givenNumber_whenEven_thenTrue() {
+	public void assertIfTrue() {
 		Allure.step("assertEven");
-		assertTrue(2 % 2 == 0);
+		assertTrue(true);
 	}
 
 
