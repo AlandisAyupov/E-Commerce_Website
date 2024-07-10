@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
-
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository)

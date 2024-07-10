@@ -1,1 +1,1 @@
-To run sonarlint: 
+To run sonarQube: Within sonarqube installation, there should be a file StartSonar.bat. Copy the path to the file and run it.
