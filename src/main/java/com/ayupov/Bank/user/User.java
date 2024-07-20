@@ -1,10 +1,14 @@
 package com.ayupov.Bank.user;
 
 import jakarta.persistence.Entity;
+
+import org.springframework.web.context.annotation.SessionScope;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Id;
 
 @Entity
+@SessionScope
 public class User {
   @Id
   @Column(name = "email", nullable = false, unique = true)
