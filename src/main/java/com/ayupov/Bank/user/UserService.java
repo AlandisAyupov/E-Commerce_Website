@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Service
 public class UserService {
-    private final UserRepository userRepository;
+    private final LoginRepository userRepository;
 
-    public UserService(UserRepository userRepository)
+    public UserService(LoginRepository userRepository)
     {
         // this keyword refers to current instance
         this.userRepository = userRepository;

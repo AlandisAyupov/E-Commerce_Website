@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -19,7 +22,7 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/add")
-    public int addUser(@RequestBody RequestUser user) {
+    public int addUser(@RequestBody RequestUser user, HttpSession session) {
         User newUser = new User();
         newUser.setEmail(user.getEmail());
         newUser.setPassword(user.getPassword());
@@ -27,11 +30,27 @@ public class UserController {
     }
 
     @GetMapping("/get")
-    public int loginUser(@RequestParam String email, @RequestParam String password) {
+    public int loginUser(@RequestParam String email, @RequestParam String password, HttpServletRequest request, HttpSession session) {
         boolean ret = userService.loginUser(email, password);
         if(ret)
             return 200;
         else
             return 404;
+    }
+
+    @GetMapping("/logout")
+    public boolean logoutUser(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);        
+        if(session != null) {
+            session.invalidate();
+            return true;
+        }
+        else
+            return false;
+    }
+
+    @GetMapping("/check")
+    public boolean checkSession(HttpServletRequest request) {
+        return (request.getSession(false) == null);
     }
 }

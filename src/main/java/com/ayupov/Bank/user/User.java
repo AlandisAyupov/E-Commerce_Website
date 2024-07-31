@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 
 @Entity
 @SessionScope
-public class User {
+public class LoginForm {
   @Id
   @Column(name = "email", nullable = false, unique = true)
   private String email;

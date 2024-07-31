@@ -10,6 +10,6 @@ import com.ayupov.Bank.user.User;
 
 // Find some method to block repository from export.
 @RepositoryRestResource(exported = false)
-public interface UserRepository extends CrudRepository<User, String> {
+public interface LoginRepository extends CrudRepository<User, String> {
 
 }
