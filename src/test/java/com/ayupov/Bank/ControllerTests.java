@@ -7,9 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.Optional;
-import com.ayupov.Bank.user.User;
-import com.ayupov.Bank.user.UserRepository;
-import com.ayupov.Bank.user.UserService;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,6 +15,10 @@ import org.mockito.Mock;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import com.ayupov.Bank.Login.LoginForm;
+import com.ayupov.Bank.Login.LoginRepository;
+import com.ayupov.Bank.Login.LoginService;
  
 @ExtendWith(MockitoExtension.class)
  
@@ -24,17 +26,17 @@ import org.springframework.boot.test.context.SpringBootTest;
 class ControllerTests {
  
     @Mock
-    private UserRepository userRepo;
+    private LoginRepository userRepo;
     //When using Mockito Use @InjectMocks to inject
     //Mocked beans to following class
     @InjectMocks
-    private UserService userService;
+    private LoginService userService;
  
     @Test 
     void addUser()
     {
         //given
-		User user1 = new User();
+		LoginForm user1 = new LoginForm();
 		user1.setEmail("abc@gmail.com");
 		user1.setPassword("1dj1jd90");
         given(userRepo.save(user1))
@@ -47,10 +49,10 @@ class ControllerTests {
     void loginUser()
     {
         //given
-		User user1 = new User();
+		LoginForm user1 = new LoginForm();
 		user1.setEmail("abc@gmail.com");
 		user1.setPassword("1dj1jd90");
-        Optional<User> userOpt = Optional.of(user1);
+        Optional<LoginForm> userOpt = Optional.of(user1);
         given(userRepo.findById(user1.getEmail())).willReturn(userOpt);
 
         assertThat(userService.loginUser(user1.getEmail(), user1.getPassword())).isTrue();
@@ -60,7 +62,7 @@ class ControllerTests {
     void getAllUsers()
     {
         //given
-		User user1 = new User();
+		LoginForm user1 = new LoginForm();
 		user1.setEmail("abc@gmail.com");
 		user1.setPassword("1dj1jd90");
 		userService.addUser(user1);

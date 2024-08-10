@@ -1,4 +1,4 @@
-package com.ayupov.Bank.user;
+package com.ayupov.Bank.Login;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -7,39 +7,54 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ayupov.Bank.Application;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.RequestParam;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/login")
 @CrossOrigin(origins = { "http://localhost:4000" }, allowedHeaders = "*", allowCredentials = "true")
 public class UserController {
+    private static final Logger log = LoggerFactory.getLogger(Application.class);
 
     @Autowired
-    private UserService userService;
+    private LoginService userService;
 
     @PostMapping("/add")
     public int addUser(@RequestBody RequestUser user, HttpSession session) {
-        User newUser = new User();
+        log.info("add " + user.toString());
+        LoginForm newUser = new LoginForm();
         newUser.setEmail(user.getEmail());
         newUser.setPassword(user.getPassword());
         return userService.addUser(newUser);
     }
 
     @GetMapping("/get")
-    public int loginUser(@RequestParam String email, @RequestParam String password, HttpServletRequest request, HttpSession session) {
+    public int loginUser(@RequestParam String email, @RequestParam String password, HttpServletRequest request, HttpSession session) 
+    {
+        log.info("login " + email + " " + password);
         boolean ret = userService.loginUser(email, password);
         if(ret)
+        {
+            session.setAttribute("email", email);
             return 200;
+        }
         else
+        {
+            session.invalidate();
             return 404;
+        }
     }
 
     @GetMapping("/logout")
     public boolean logoutUser(HttpServletRequest request) {
+        log.info("logout");
         HttpSession session = request.getSession(false);        
         if(session != null) {
             session.invalidate();
@@ -51,6 +66,15 @@ public class UserController {
 
     @GetMapping("/check")
     public boolean checkSession(HttpServletRequest request) {
-        return (request.getSession(false) == null);
+        log.info("check");
+        return (request.getSession(false) != null);
+    }
+
+    @GetMapping("/email")
+    public String getAttribute(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);  
+        String ret = (String) session.getAttribute("email");
+        log.info("get attribute | " + ret);
+        return ret;
     }
 }

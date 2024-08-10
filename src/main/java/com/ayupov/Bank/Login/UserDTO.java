@@ -1,4 +1,4 @@
-package com.ayupov.Bank.user;
+package com.ayupov.Bank.Login;
 
 import lombok.Data;
 
