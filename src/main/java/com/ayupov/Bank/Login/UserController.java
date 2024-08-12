@@ -69,12 +69,4 @@ public class UserController {
         log.info("check");
         return (request.getSession(false) != null);
     }
-
-    @GetMapping("/email")
-    public String getAttribute(HttpServletRequest request) {
-        HttpSession session = request.getSession(false);  
-        String ret = (String) session.getAttribute("email");
-        log.info("get attribute | " + ret);
-        return ret;
-    }
 }

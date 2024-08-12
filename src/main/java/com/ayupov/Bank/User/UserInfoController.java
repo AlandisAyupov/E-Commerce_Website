@@ -11,11 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ayupov.Bank.Application;
 import com.ayupov.Bank.User.UserInfo;
 import com.ayupov.Bank.User.UserInfoService;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
 import com.ayupov.Bank.User.RequestUserInfo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.AccessDeniedException;
 
 @RestController
 @RequestMapping("/user")
@@ -39,8 +44,12 @@ public class UserInfoController {
     }
 
     @GetMapping("/get")
-    public UserInfo getUser(@RequestParam String email) 
+    public UserInfo getUser(HttpServletRequest request) 
     {
+        HttpSession session = request.getSession(false);
+        if(session == null) 
+            throw new AccessDeniedException("login required.");
+        String email = (String) session.getAttribute("email");
         log.info("get " + email);
         return userService.getUser(email);
     }
