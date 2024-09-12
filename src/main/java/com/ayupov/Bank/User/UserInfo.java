@@ -14,6 +14,8 @@ public class UserInfo {
   private String firstName;
   @Column(name = "lastName", nullable = false)
   private String lastName;
+  @Column(name = "type", nullable = false)
+  private int type;
   @Column(name = "address", nullable = false)
   private String address;
   @Column(name = "dateOfBirth", nullable = false)
@@ -41,6 +43,14 @@ public class UserInfo {
   public void setLastName(String lastName)
   {
     this.lastName = lastName;
+  }
+  public int getType()
+  {
+    return this.type;
+  }
+  public void setType(int type)
+  {
+    this.type = type;
   }
   public String getAddress()
   {

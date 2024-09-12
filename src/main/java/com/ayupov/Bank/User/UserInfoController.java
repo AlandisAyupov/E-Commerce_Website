@@ -38,6 +38,7 @@ public class UserInfoController {
         newUser.setEmail(user.getEmail());
         newUser.setFirstName(user.getFirstName());
         newUser.setLastName(user.getLastName());
+        newUser.setType(user.getType());
         newUser.setAddress(user.getAddress());
         newUser.setDateOfBirth(user.getDateOfBirth());
         return userService.addUser(newUser);

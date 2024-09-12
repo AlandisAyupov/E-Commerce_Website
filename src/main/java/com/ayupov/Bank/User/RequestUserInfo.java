@@ -4,6 +4,7 @@ public class RequestUserInfo {
     String email;
     String firstName;
     String lastName;
+    int type;
     String address;
     int[] dateOfBirth;
     public String getEmail()
@@ -29,6 +30,14 @@ public class RequestUserInfo {
     public void setLastName(String lastName)
     {
         this.lastName = lastName;
+    }
+    public int getType()
+    {
+      return this.type;
+    }
+    public void setType(int type)
+    {
+      this.type = type;
     }
     public String getAddress()
     {
