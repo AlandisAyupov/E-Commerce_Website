@@ -1,9 +1,7 @@
 package com.ayupov.Bank;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import io.qameta.allure.Allure;
-import io.qameta.allure.Step;
 import org.testng.annotations.*;
 import org.springframework.boot.test.context.SpringBootTest;
 

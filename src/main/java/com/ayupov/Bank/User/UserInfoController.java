@@ -1,7 +1,6 @@
 package com.ayupov.Bank.User;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,13 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ayupov.Bank.Application;
-import com.ayupov.Bank.User.UserInfo;
-import com.ayupov.Bank.User.UserInfoService;
-
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-
-import com.ayupov.Bank.User.RequestUserInfo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

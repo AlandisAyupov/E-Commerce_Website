@@ -1,20 +1,17 @@
 package com.ayupov.Bank;
 
 //USing BDD Mockito 
-import static org.mockito.BDDMockito.verify;
 import static org.mockito.BDDMockito.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.ayupov.Bank.Login.LoginForm;
 import com.ayupov.Bank.Login.LoginRepository;
