@@ -10,7 +10,7 @@ public class Item {
   @Id
   @GeneratedValue
   @Column(name = "id", nullable = false, unique = true)
-  private int id; 
+  private int id;
   @Column(name = "name", nullable = false)
   private String name;
   @Column(name = "description", nullable = false)
@@ -19,44 +19,54 @@ public class Item {
   private double price;
   @Column(name = "pictureId", nullable = false, unique = true)
   private String pictureId;
-  public int getId()
-  {
+  @Column(name = "pictureName", nullable = false)
+  private String pictureName;
+
+  public int getId() {
     return this.id;
   }
-  public void setId(int id)
-  {
+
+  public void setId(int id) {
     this.id = id;
   }
-  public String getName()
-  {
+
+  public String getName() {
     return this.name;
   }
-  public void setName(String name)
-  {
+
+  public void setName(String name) {
     this.name = name;
   }
-  public String getDescription()
-  {
+
+  public String getDescription() {
     return this.description;
   }
-  public void setDescription(String description)
-  {
+
+  public void setDescription(String description) {
     this.description = description;
   }
-  public double getPrice()
-  {
+
+  public double getPrice() {
     return this.price;
   }
-  public void setPrice(double price)
-  {
+
+  public void setPrice(double price) {
     this.price = price;
   }
-  public String getPictureId()
-  {
+
+  public String getPictureId() {
     return this.pictureId;
   }
-  public void setPictureId(String pictureId)
-  {
+
+  public void setPictureId(String pictureId) {
     this.pictureId = pictureId;
+  }
+
+  public String getPictureName(String pictureName) {
+    return this.pictureName;
+  }
+
+  public void setPictureName(String pictureName) {
+    this.pictureName = pictureName;
   }
 }

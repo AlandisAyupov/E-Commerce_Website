@@ -38,6 +38,7 @@ public class ItemController {
         newItem.setName(item.getName());
         newItem.setDescription(item.getDescription());
         newItem.setPrice(item.getPrice());
+        newItem.setPictureName(item.getPictureName());
         UUID uuid = UUID.randomUUID();
         newItem.setPictureId(uuid.toString());
         return itemService.addItem(newItem);
