@@ -62,7 +62,7 @@ public class Item {
     this.pictureId = pictureId;
   }
 
-  public String getPictureName(String pictureName) {
+  public String getPictureName() {
     return this.pictureName;
   }
 

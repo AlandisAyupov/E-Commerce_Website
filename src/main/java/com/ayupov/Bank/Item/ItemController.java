@@ -78,9 +78,10 @@ public class ItemController {
         value = "/get-image",
         produces = MediaType.IMAGE_JPEG_VALUE
     )
-    public byte[] getImageWithMediaType(@RequestParam int pictureId) throws IOException {
+    public byte[] getImageWithMediaType(@RequestParam String pictureName) throws IOException {
+        log.info(pictureName);
         InputStream in = getClass()
-        .getResourceAsStream("/com/ayupov/Bank/images/" + pictureId + ".jpeg");
+        .getResourceAsStream("/com/ayupov/Bank/images/" + pictureName + ".jpeg");
         return IOUtils.toByteArray(in);
     }
 }

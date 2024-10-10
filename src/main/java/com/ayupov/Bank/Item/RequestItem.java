@@ -44,11 +44,11 @@ public class RequestItem {
     return this.pictureId;
   }
 
-  public void setPictureId(int pictureId) {
+  public void setPictureId(String pictureId) {
     this.pictureId = pictureId;
   }
 
-  public String getPictureName(String pictureName) {
+  public String getPictureName() {
     return this.pictureName;
   }
 
