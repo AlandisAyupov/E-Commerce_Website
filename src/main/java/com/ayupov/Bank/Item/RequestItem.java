@@ -58,6 +58,6 @@ public class RequestItem {
 
   @Override
   public String toString() {
-    return this.id + " " + this.name + " " + this.description + " " + this.price + " " + this.pictureId;
+    return this.id + " " + this.name + " " + this.description + " " + this.price + " " + this.pictureId + " " + this.pictureName;
   }
 }
