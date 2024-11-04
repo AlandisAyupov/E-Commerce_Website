@@ -21,4 +21,16 @@ public class Picture {
     public String getEncoding() {
         return this.encoding;
     }
+
+    public void setPictureID(String pictureID) {
+        this.pictureID = pictureID;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public void setEncoding(String encoding) {
+        this.encoding = encoding;
+    }
 }
