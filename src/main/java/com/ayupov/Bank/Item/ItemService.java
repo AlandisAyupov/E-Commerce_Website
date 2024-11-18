@@ -71,7 +71,7 @@ public class ItemService {
             item1.setName(item.getName());
             item1.setDescription(item.getDescription());
             item1.setPrice(item.getPrice());
-            item1.setPictureName(item.getPictureName());
+            item1.setPictureId(item.getPictureId());
             itemRepository.save(item1);
             return 200;
         }

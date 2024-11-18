@@ -19,8 +19,6 @@ public class Item {
   private double price;
   @Column(name = "pictureId", nullable = false, unique = true)
   private String pictureId;
-  @Column(name = "pictureName", nullable = false)
-  private String pictureName;
 
   public int getId() {
     return this.id;
@@ -60,13 +58,5 @@ public class Item {
 
   public void setPictureId(String pictureId) {
     this.pictureId = pictureId;
-  }
-
-  public String getPictureName() {
-    return this.pictureName;
-  }
-
-  public void setPictureName(String pictureName) {
-    this.pictureName = pictureName;
   }
 }

@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Base64;
 import java.util.UUID;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 
 @RestController
 @RequestMapping("/picture")
@@ -31,8 +34,18 @@ public class PictureController {
     @Autowired
     private PictureService pictureService;
 
+    @GetMapping(
+        value = "/get",
+        produces = MediaType.IMAGE_JPEG_VALUE
+    )
+    public byte[] getImageWithMediaType(@RequestParam String pictureID) throws IOException {
+        log.info(pictureID);
+        Base64.Decoder decoder = Base64.getDecoder();
+        return decoder.decode(pictureService.getPicture(pictureID).getData());
+    }
+
     @PostMapping("/add")
-    public int addPicture(@RequestParam("file") MultipartFile file) {
+    public String addPicture(@RequestParam("file") MultipartFile file) {
         byte[] fileContent;
         try {
             String encodedString = Base64.getEncoder().encodeToString(file.getBytes());
@@ -41,10 +54,11 @@ public class PictureController {
             picture.setPictureID(uuid.toString());
             picture.setData(encodedString);
             picture.setEncoding("base64");
-            return pictureService.addPicture(picture);
+            if(pictureService.addPicture(picture) == 200)
+                return picture.getPictureID();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return -1;
+        return null;
     }
 }

@@ -7,6 +7,9 @@ import org.springframework.stereotype.Service;
 import com.ayupov.Bank.Application;
 import com.ayupov.Bank.Pictures.PictureRepository;
 
+import java.util.Base64;
+import java.util.Optional;
+
 @Service
 public class PictureService {
     private static final Logger log = LoggerFactory.getLogger(Application.class);
@@ -23,5 +26,17 @@ public class PictureService {
     {
         pictureRepository.save(picture);
         return 200;
+    }
+
+    public Picture getPicture(String pictureID)
+    {
+        Optional<Picture> opt = pictureRepository.findById(pictureID);
+        if(opt.isPresent())
+        {
+            log.info("item exists");
+            Picture picture = opt.get();
+            return picture;
+        }
+        return null;
     }
 }

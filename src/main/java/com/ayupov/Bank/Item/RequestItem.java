@@ -6,7 +6,6 @@ public class RequestItem {
   private String description;
   private double price;
   private String pictureId;
-  private String pictureName;
 
   public int getId() {
     return this.id;
@@ -48,16 +47,8 @@ public class RequestItem {
     this.pictureId = pictureId;
   }
 
-  public String getPictureName() {
-    return this.pictureName;
-  }
-
-  public void setPictureName(String pictureName) {
-    this.pictureName = pictureName;
-  }
-
   @Override
   public String toString() {
-    return this.id + " " + this.name + " " + this.description + " " + this.price + " " + this.pictureId + " " + this.pictureName;
+    return this.id + " " + this.name + " " + this.description + " " + this.price + " " + this.pictureId;
   }
 }
