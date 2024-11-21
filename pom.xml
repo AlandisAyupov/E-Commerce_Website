@@ -8,7 +8,7 @@
 		<version>3.2.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.ayupov</groupId>
+	<groupId>com.ayupov.Bank</groupId>
 	<artifactId>Bank</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Bank</name>
@@ -147,8 +147,20 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.1</version>
+				<configuration>
+					<source>22</source>
+					<target>22</target>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.ayupov.Bank.Application</mainClass>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>io.qameta.allure</groupId>

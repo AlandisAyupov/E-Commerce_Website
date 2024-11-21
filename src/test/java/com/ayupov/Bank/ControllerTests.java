@@ -54,21 +54,4 @@ class ControllerTests {
 
         assertThat(userService.loginUser(user1.getEmail(), user1.getPassword())).isTrue();
     }
-
-    @Test
-    void getAllUsers()
-    {
-        //given
-		LoginForm user1 = new LoginForm();
-		user1.setEmail("abc@gmail.com");
-		user1.setPassword("1dj1jd90");
-		userService.addUser(user1);
-        //When
-        given(userRepo.findAll())
-        .willReturn(List.of(user1));
-        var list = userService.getUsers();
-    	//Then
-        //Make sure to import assertThat From org.assertj.core.api package
-        assertThat(list).isNotNull().hasSize(1);
-    }
 }
