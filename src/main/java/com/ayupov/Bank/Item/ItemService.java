@@ -1,14 +1,15 @@
-package com.ayupov.Bank.Item;
+package com.ayupov.bank.Item;
 
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
+
+import com.ayupov.bank.Application;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.ayupov.Bank.Application;
 
 @Service
 public class ItemService {

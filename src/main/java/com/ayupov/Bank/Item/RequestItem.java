@@ -1,4 +1,4 @@
-package com.ayupov.Bank.Item;
+package com.ayupov.bank.Item;
 
 public class RequestItem {
   private int id;

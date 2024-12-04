@@ -1,18 +1,14 @@
-package com.ayupov.Bank.Pictures;
+package com.ayupov.bank.Pictures;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
-import com.ayupov.Bank.Application;
-import com.ayupov.Bank.Pictures.PictureRepository;
-
-import java.util.Base64;
 import java.util.Optional;
 
 @Service
 public class PictureService {
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger log = LoggerFactory.getLogger(PictureService.class);
 
     private final PictureRepository pictureRepository;
 
@@ -34,8 +30,7 @@ public class PictureService {
         if(opt.isPresent())
         {
             log.info("item exists");
-            Picture picture = opt.get();
-            return picture;
+            return opt.get();
         }
         return null;
     }

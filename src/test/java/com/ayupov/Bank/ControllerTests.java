@@ -4,7 +4,6 @@ package com.ayupov.Bank;
 import static org.mockito.BDDMockito.given;
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -13,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.ayupov.Bank.Login.LoginForm;
-import com.ayupov.Bank.Login.LoginRepository;
-import com.ayupov.Bank.Login.LoginService;
+import com.ayupov.bank.Login.LoginForm;
+import com.ayupov.bank.Login.LoginRepository;
+import com.ayupov.bank.Login.LoginService;
  
 @ExtendWith(MockitoExtension.class)
  

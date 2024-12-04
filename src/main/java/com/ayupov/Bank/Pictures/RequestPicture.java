@@ -1,4 +1,4 @@
-package com.ayupov.Bank.Pictures;
+package com.ayupov.bank.Pictures;
 
 public class RequestPicture {
     public String pictureID;

@@ -39,3 +39,5 @@ docker-compose
 
 src/main/frontend
 src/main/resources/application.properties
+
+data

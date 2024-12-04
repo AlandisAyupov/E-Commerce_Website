@@ -1,4 +1,4 @@
-package com.ayupov.Bank.Login;
+package com.ayupov.bank.Login;
 
 public class RequestUser {
     String email;
