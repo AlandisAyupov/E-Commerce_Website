@@ -1,4 +1,4 @@
-package com.ayupov.bank.Login;
+package com.ayupov.Bank.Login;
 
 import jakarta.persistence.Entity;
 

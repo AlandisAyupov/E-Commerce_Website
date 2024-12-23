@@ -1,4 +1,4 @@
-package com.ayupov.bank.Item;
+package com.ayupov.Bank.Item;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ayupov.bank.Application;
+import com.ayupov.Bank.Application;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

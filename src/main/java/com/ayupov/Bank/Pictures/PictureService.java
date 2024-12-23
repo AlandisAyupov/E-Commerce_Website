@@ -1,4 +1,4 @@
-package com.ayupov.bank.Pictures;
+package com.ayupov.Bank.Pictures;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.ayupov.bank.Item;
+package com.ayupov.Bank.Item;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

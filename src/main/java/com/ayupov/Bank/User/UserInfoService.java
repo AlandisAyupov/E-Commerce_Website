@@ -1,4 +1,4 @@
-package com.ayupov.bank.User;
+package com.ayupov.Bank.User;
 
 import java.util.Optional;
 
@@ -7,7 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ayupov.bank.Application;
+import com.ayupov.Bank.Application;
 
 @Service
 public class UserInfoService {

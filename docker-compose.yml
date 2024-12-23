@@ -1,4 +1,4 @@
-version: '3.1'
+version: '2.32.0'
 
 services:
   redis:
@@ -7,14 +7,12 @@ services:
       - "6379:6379"
 
   mongodb:
-    image: mongodb/mongodb-community-server:6.0-ubi8
+    image: mongo:latest
     environment:
       - MONGO_INITDB_ROOT_USERNAME=Bank
       - MONGO_INITDB_ROOT_PASSWORD=iWhHEoknqyzfXMAT
     volumes:
-      - type: bind
-        source: ./data
-        target: /data/db
+      - ./data:/data/db
     ports:
       - '27017:27017'
 
@@ -22,9 +20,10 @@ services:
     container_name: 'guide-mysql'
     image: 'mysql:latest'
     environment:
-      - 'MYSQL_DATABASE=scheme'
-      - 'MYSQL_PASSWORD=kUV(F@73eugdw'
-      - 'MYSQL_ROOT_PASSWORD=kUV(F@73eugdw'
+      - MYSQL_ROOT_PASSWORD=kUV(F@73eugdw
+      - MYSQL_USER=sql
+      - MYSQL_PASSWORD=kUV(F@73eugdw
+      - MYSQL_DATABASE=scheme
     ports:
       - '3307:3306'
 
@@ -40,3 +39,5 @@ services:
       - redis
       - mongodb
       - mysql
+    environment:
+      - MONGO_URI=mongodb://Bank:iWhHEoknqyzfXMAT@mongodb:27017/mydb

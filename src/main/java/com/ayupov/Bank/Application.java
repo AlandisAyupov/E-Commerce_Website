@@ -1,4 +1,4 @@
-package com.ayupov.bank;
+package com.ayupov.Bank;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -1,4 +1,4 @@
-package com.ayupov.bank.Login;
+package com.ayupov.Bank.Login;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.ayupov.bank.Application;
+import com.ayupov.Bank.Application;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

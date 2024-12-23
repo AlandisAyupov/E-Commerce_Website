@@ -1,4 +1,4 @@
-package com.ayupov.bank.Item;
+package com.ayupov.Bank.Item;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

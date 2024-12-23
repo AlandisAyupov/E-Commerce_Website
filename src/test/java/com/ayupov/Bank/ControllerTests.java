@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.ayupov.bank.Login.LoginForm;
-import com.ayupov.bank.Login.LoginRepository;
-import com.ayupov.bank.Login.LoginService;
+import com.ayupov.Bank.Login.LoginForm;
+import com.ayupov.Bank.Login.LoginRepository;
+import com.ayupov.Bank.Login.LoginService;
  
 @ExtendWith(MockitoExtension.class)
  

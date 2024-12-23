@@ -1,4 +1,4 @@
-package com.ayupov.bank.User;
+package com.ayupov.Bank.User;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;

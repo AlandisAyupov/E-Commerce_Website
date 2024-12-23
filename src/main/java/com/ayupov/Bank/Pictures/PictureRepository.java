@@ -1,4 +1,4 @@
-package com.ayupov.bank.Pictures;
+package com.ayupov.Bank.Pictures;
 
 import java.util.List;
 
