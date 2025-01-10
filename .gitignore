@@ -35,7 +35,7 @@ build/
 docs.txt
 allure-results/** 
 allure-report/**
-docker-compose
+docker-compose.yml
 
 src/main/frontend
 src/main/resources/application.properties
