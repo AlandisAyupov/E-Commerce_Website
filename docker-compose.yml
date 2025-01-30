@@ -10,10 +10,7 @@ services:
       - "6379:6379"
 
   mongodb:
-    image: mongo:latest
-    # environment:
-    #   - MONGO_INITDB_ROOT_USERNAME=Bank
-    #   - MONGO_INITDB_ROOT_PASSWORD=iWhHEoknqyzfXMAT
+    image: "mongo:latest"
     command: mongod --port 27018
     volumes:      
       - dbdata6:/data/db
@@ -51,7 +48,6 @@ services:
       - mysql
     environment:
       - SPRING_PROFILES_ACTIVE=docker
-      # - MONGO_URI=mongodb://Bank:iWhHEoknqyzfXMAT@mongodb:27018/mydb?authSource=admin&retryWrites=true&w=majority
       - SPRING_DATA_REDIS_HOST=redis
       - SPRING_DATA_REDIS_PASSWORD=6379
 
