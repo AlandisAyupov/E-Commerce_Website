@@ -19,8 +19,10 @@ services:
       - dbdata6:/data/db
     expose:
       - "27018"
+      - "27017"
     ports:
       - '27018:27018'
+      - '27017:27017'
 
   mysql:
     container_name: 'guide-mysql'
@@ -35,22 +37,23 @@ services:
     ports:
       - '3307:3306'
 
-  # ecom:
-  #   image: 'ecom:latest'
-  #   ports: 
-  #     - '4000:4000'
-  #   links:
-  #     - redis
-  #     - mongodb
-  #     - mysql
-  #   depends_on:
-  #     - redis
-  #     - mongodb
-  #     - mysql
-  #   environment:
-  #     - MONGO_URI=mongodb://Bank:iWhHEoknqyzfXMAT@mongodb:27018/mydb?authSource=admin&retryWrites=true&w=majority
-  #     - SPRING_DATA_REDIS_HOST=redis
-  #     - SPRING_DATA_REDIS_PASSWORD=6379
+  ecom:
+    build: .
+    ports: 
+      - '4000:4000'
+    links:
+      - redis
+      - mongodb
+      - mysql
+    depends_on:
+      - redis
+      - mongodb
+      - mysql
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      # - MONGO_URI=mongodb://Bank:iWhHEoknqyzfXMAT@mongodb:27018/mydb?authSource=admin&retryWrites=true&w=majority
+      - SPRING_DATA_REDIS_HOST=redis
+      - SPRING_DATA_REDIS_PASSWORD=6379
 
 volumes:  
   dbdata6:
